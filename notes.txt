@@ -1,0 +1,13 @@
+JSON="crkbd_rev4_1_v5.json"
+KB=$(jq -r '.keyboard' "$JSON")
+KM=$(jq -r '.keymap' "$JSON")
+
+echo "keyboard: $KB"
+echo "keymap:   $KM"
+
+# if exists don't execute again, it will override config
+mkdir -p "keyboards/crkbd/keymaps/$KM"
+qmk json2c "$JSON" -o "keyboards/crkbd/keymaps/$KM/keymap.c"
+
+
+qmk compile -kb "$KB" -km "$KM"
