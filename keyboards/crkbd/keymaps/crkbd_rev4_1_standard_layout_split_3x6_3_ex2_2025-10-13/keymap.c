@@ -41,8 +41,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
         red_override_active = true;
 
-        const HSV hsv = rgb_matrix_get_hsv();
-        rgb_matrix_sethsv_noeeprom(0, hsv.s, hsv.v);
+        // const HSV hsv = rgb_matrix_get_hsv();
+        // rgb_matrix_sethsv_noeeprom(0, hsv.s, hsv.v);
+        rgb_matrix_sethsv_noeeprom(0, 255, 180);
     } else if (red_override_active) {
         red_override_active = false;
         rgb_matrix_sethsv_noeeprom(saved_hsv.h, saved_hsv.s, saved_hsv.v);
